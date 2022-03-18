@@ -49,7 +49,7 @@ export default function Registerpage() {
               })
             }
             setIsSubmitting(true)
-            register(email,password)
+            register(email, password)
             .then((response) => console.log(response))
             .catch((error) => {
               console.log(error.message)

@@ -7,18 +7,20 @@ import {
     updateDoc,
     deleteDoc,
     doc
- } from 'firebase/firestore'
+ } from 'firebase/firestore';
  import { 
   Container,
   Heading,
   Box,
   Text,
   Stack,
+  HStack,
   Button,
   Avatar,
   Icon,
-  Input
-} from '@chakra-ui/react'
+  Input,
+  Textarea
+} from '@chakra-ui/react';
 import { FcLike } from "react-icons/fc";
 
 import { useAuth } from "../contexts/AuthContext"
@@ -56,19 +58,26 @@ function Forum() {
 
   return (
   <div>
-    <Input 
-    placeholder='Title...' 
-    onChange={(event) => {
-      setNewTitle(event.target.value);
-    }} 
-    />
-    <Input 
-    placeholder='Message...'
-    onChange={(event) => {
-      setNewMsg(event.target.value);
-    }}
-    />
-    <button onClick={createPosts}>Create Post</button>
+    <Stack spacing='2' align="center">
+      <Input 
+      maxW={'60%'}
+      w={'full'}
+      placeholder='Title...' 
+      onChange={(event) => {
+        setNewTitle(event.target.value);
+      }} 
+      />
+      <Textarea 
+      maxW={'60%'}
+      w={'full'}
+      h={'100px'}
+      placeholder='Message...'
+      onChange={(event) => {
+        setNewMsg(event.target.value);
+      }}
+      />
+      <Button onClick={createPosts}>Create Post</Button>
+    </Stack>
 
     {posts.map((post) => {
       return (
@@ -77,7 +86,6 @@ function Forum() {
           <Box
             maxW={'100%'}
             w={'full'}
-            bg={'gray.200'}
             boxShadow={'2xl'}
             rounded={'md'}
             overflow={'hidden'}
@@ -88,8 +96,8 @@ function Forum() {
               <Stack align={'center'} w={'100px'} >
                   <Avatar 
                     src={post.avatar} 
-                    w={'100px'} 
-                    h={'100px'}
+                    w={'50px'} 
+                    h={'50px'}
                     css={{
                       border: '2px solid white',
                       borderRadius: '50%'
@@ -103,9 +111,9 @@ function Forum() {
               </Stack>
             </Stack>
             
-            <Stack direction={'row'} justify={'right'} m={'2'} >
-              <Icon as={FcLike}  />
-              <Text align={'left'}  >{post.likes}</Text>
+            <HStack direction={'row'} justify={'right'} m={'2'} >
+              <Icon as={FcLike} />
+              <Text align={'left'} >{post.likes}</Text>
               <Button
                 onClick={() => {
                     likePost(post.id, post.likes);
@@ -120,7 +128,7 @@ function Forum() {
                 {" "}
                 Delete Post
               </Button>
-            </Stack>
+            </HStack>
 
           </Box>
         </Container>

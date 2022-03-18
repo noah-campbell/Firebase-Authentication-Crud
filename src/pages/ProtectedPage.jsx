@@ -7,7 +7,7 @@ export default function ProtectedPage() {
   return (
     <Layout>
       <Badge colorScheme='green' fontSize='lg' mx={4}>
-        Protected Page
+        Members only
       </Badge>
       <Container maxW='container.lg' overflowX='auto' py={4}>
         <Forum />

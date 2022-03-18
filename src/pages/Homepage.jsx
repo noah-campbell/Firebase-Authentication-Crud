@@ -19,7 +19,7 @@ export default function Homepage() {
         fontSize='4xl'
         isTruncated
       >
-        {(!currentUser && `Hello! `) || (currentUser.displayName && `Hey ${currentUser.displayName}! `)}
+        {(!currentUser && `Hello! `) || (currentUser && `Hey ${currentUser.displayName}! `)}
         Welcome to my Chat site
       </Heading>
       <chakra.span
