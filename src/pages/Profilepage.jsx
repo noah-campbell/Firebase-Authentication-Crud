@@ -1,8 +1,6 @@
 import React from 'react'
 import { Layout } from '../components/Layout'
 import { 
-  chakra, 
-  Container, 
   Heading,
   Avatar,
   Box,
@@ -11,9 +9,7 @@ import {
   Text,
   Stack,
   Button,
-  useColorModeValue, 
-} from '@chakra-ui/react'
-
+  useColorModeValue } from '@chakra-ui/react'
 import { useAuth } from "../contexts/AuthContext"
 
 export default function Profilepage() {
@@ -49,9 +45,9 @@ export default function Profilepage() {
           <Box p={6}>
             <Stack spacing={0} align={'center'} mb={5}>
               <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
-              {currentUser.displayName}
+                {currentUser.displayName}
               </Heading>
-              <Text color={'gray.500'}>{currentUser.email}</Text>
+              <Text color={'gray.500'}>Email: {currentUser.email}</Text>
               <Text color={'gray.500'}>{currentUser.createdAt}</Text>
             </Stack>
             <Button
@@ -69,11 +65,6 @@ export default function Profilepage() {
           </Box>
         </Box>
       </Center>
-      <Container maxW='container.lg' overflowX='auto' py={4}>
-        <chakra.pre>
-          {JSON.stringify(currentUser, null, 2)}
-        </chakra.pre>
-      </Container>
     </Layout>
   )
 }
